@@ -1,1 +1,1877 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>月組 好き顔9選</title>
 
+<style>
+*{box-sizing:border-box}
+
+html,body{
+  margin:0;
+  padding:0;
+  min-height:100%;
+}
+
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+  color:#554b35;
+  background:
+    radial-gradient(circle at 10% 8%,rgba(244,213,121,.22),transparent 24%),
+    radial-gradient(circle at 90% 35%,rgba(255,235,166,.28),transparent 25%),
+    linear-gradient(180deg,#fffefb 0%,#fffbed 50%,#fff6d9 100%);
+  min-height:100vh;
+}
+
+button{font-family:inherit}
+
+.app{
+  width:min(100%,620px);
+  margin:0 auto;
+  min-height:100vh;
+  padding:15px 14px 35px;
+  position:relative;
+  overflow:hidden;
+}
+
+.content{
+  position:relative;
+  z-index:2;
+}
+
+/* 背景の月 */
+
+.decor-moon{
+  position:fixed;
+  width:120px;
+  height:120px;
+  border-radius:50%;
+  background:#e8c24e;
+  opacity:.10;
+  pointer-events:none;
+  z-index:0;
+}
+
+.decor-moon::after{
+  content:"";
+  position:absolute;
+  width:105px;
+  height:105px;
+  border-radius:50%;
+  background:#fff9e5;
+  left:35px;
+  top:-10px;
+}
+
+.moon-a{
+  top:3%;
+  left:-40px;
+  transform:rotate(-15deg);
+}
+
+.moon-b{
+  top:40%;
+  right:-42px;
+  transform:rotate(150deg) scale(.85);
+}
+
+.moon-c{
+  bottom:2%;
+  left:-45px;
+  transform:rotate(25deg) scale(1.1);
+}
+
+/* ヘッダー */
+
+.header{
+  text-align:center;
+  padding:14px 10px 16px;
+}
+
+.eyebrow{
+  color:#b99a42;
+  font-family:Georgia,serif;
+  letter-spacing:.22em;
+  font-size:11px;
+  font-weight:700;
+  margin-bottom:7px;
+}
+
+.title{
+  margin:0;
+  font-size:29px;
+  line-height:1.25;
+  font-weight:900;
+  color:#574d35;
+}
+
+.title-number{
+  color:#d8ac2d;
+}
+
+.title-decoration{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:13px;
+  margin:12px auto 0;
+}
+
+.title-decoration::before,
+.title-decoration::after{
+  content:"";
+  width:85px;
+  height:1px;
+  background:linear-gradient(90deg,transparent,#e4c76e);
+}
+
+.title-decoration::after{
+  background:linear-gradient(90deg,#e4c76e,transparent);
+}
+
+/* 小さい月 */
+
+.mini-moon{
+  position:relative;
+  width:18px;
+  height:18px;
+  border-radius:50%;
+  background:#ddb63c;
+  overflow:hidden;
+}
+
+.mini-moon::after{
+  content:"";
+  position:absolute;
+  width:16px;
+  height:16px;
+  border-radius:50%;
+  background:#fffdf7;
+  left:7px;
+  top:-3px;
+}
+
+/* ステップ */
+
+.stepper{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  margin:4px 5px 18px;
+  position:relative;
+}
+
+.stepper::before{
+  content:"";
+  position:absolute;
+  top:18px;
+  left:12%;
+  right:12%;
+  height:3px;
+  background:#eee5c8;
+  z-index:0;
+}
+
+.step{
+  width:25%;
+  text-align:center;
+  position:relative;
+  z-index:1;
+}
+
+.step-circle{
+  width:36px;
+  height:36px;
+  margin:0 auto 7px;
+  border-radius:50%;
+  background:#f3ecd6;
+  color:#aa9b6b;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:14px;
+  font-weight:900;
+  border:3px solid #fff;
+  box-shadow:0 2px 7px rgba(150,120,40,.08);
+}
+
+.step-label{
+  font-size:11px;
+  font-weight:900;
+  color:#aa9b6b;
+}
+
+.step.active .step-circle,
+.step.done .step-circle{
+  background:#dfb52e;
+  color:#fff;
+}
+
+.step.active .step-label,
+.step.done .step-label{
+  color:#c89d20;
+}
+
+.step.active .step-circle{
+  box-shadow:0 0 0 4px rgba(223,181,46,.14);
+}
+
+/* 共通 */
+
+.panel{
+  background:rgba(255,255,255,.88);
+  border:1px solid rgba(231,207,132,.55);
+  border-radius:28px;
+  padding:18px;
+  box-shadow:0 16px 45px rgba(170,140,55,.10);
+  backdrop-filter:blur(8px);
+}
+
+.home{
+  text-align:center;
+  padding:30px 18px 32px;
+}
+
+/* ホームの大きな月 */
+
+.home-moon{
+  width:76px;
+  height:76px;
+  margin:0 auto 18px;
+  position:relative;
+  border-radius:50%;
+  background:linear-gradient(145deg,#f3d76f,#d9aa26);
+  box-shadow:0 7px 20px rgba(194,151,32,.18);
+  overflow:hidden;
+}
+
+.home-moon::after{
+  content:"";
+  position:absolute;
+  width:70px;
+  height:70px;
+  border-radius:50%;
+  background:#fff;
+  left:29px;
+  top:-12px;
+}
+
+.home h2{
+  font-size:26px;
+  margin:0 0 15px;
+}
+
+.home p{
+  margin:0 auto;
+  max-width:390px;
+  font-size:14px;
+  line-height:1.9;
+  color:#897b55;
+}
+
+.flow{
+  margin:25px auto;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:7px;
+}
+
+.flow span{
+  padding:7px 11px;
+  background:#fff9df;
+  border:1px solid #ead58a;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:800;
+  color:#b28b18;
+}
+
+.flow b{
+  color:#d5bd6b;
+  font-weight:500;
+}
+
+.primary-button{
+  border:0;
+  width:100%;
+  min-height:54px;
+  border-radius:18px;
+  background:linear-gradient(135deg,#e7c651,#cfa324);
+  color:#fff;
+  font-size:16px;
+  font-weight:900;
+  box-shadow:0 10px 25px rgba(190,148,30,.22);
+  cursor:pointer;
+}
+
+.secondary-button{
+  border:1px solid #e8d489;
+  background:#fff;
+  color:#ad8718;
+  width:100%;
+  min-height:50px;
+  border-radius:16px;
+  font-weight:800;
+  font-size:14px;
+  cursor:pointer;
+}
+
+.button-row{
+  display:grid;
+  grid-template-columns:100px 1fr;
+  gap:8px;
+}
+
+.primary-button:active,
+.secondary-button:active{
+  transform:scale(.985);
+}
+
+.progress-wrap{
+  margin-bottom:13px;
+}
+
+.progress-info{
+  display:flex;
+  justify-content:space-between;
+  margin:0 3px 8px;
+  color:#9a8342;
+  font-size:12px;
+  font-weight:800;
+}
+
+.progress-track{
+  width:100%;
+  height:7px;
+  background:#f2e8c4;
+  border-radius:999px;
+  overflow:hidden;
+}
+
+.progress-bar{
+  height:100%;
+  background:linear-gradient(90deg,#ecd263,#cda224);
+  border-radius:999px;
+}
+
+.stage-title{
+  text-align:center;
+  margin:7px 0 5px;
+  font-size:21px;
+  font-weight:900;
+}
+
+.stage-subtitle{
+  text-align:center;
+  margin:0 0 14px;
+  font-size:12px;
+  color:#97865a;
+}
+
+/* 人物カード */
+
+.member-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:9px;
+}
+
+.member-card{
+  position:relative;
+  border:1px solid rgba(229,207,137,.62);
+  background:#fff;
+  border-radius:17px;
+  padding:6px 6px 9px;
+  box-shadow:0 6px 17px rgba(150,125,55,.08);
+  cursor:pointer;
+  transition:.15s;
+}
+
+.member-card.selected{
+  border:2px solid #d6ab2d;
+  background:#fffbeb;
+  transform:translateY(-2px);
+}
+
+.member-photo{
+  width:100%;
+  aspect-ratio:3/4;
+  object-fit:cover;
+  object-position:center top;
+  border-radius:12px;
+  display:block;
+  background:#f8f1d8;
+}
+
+.member-name{
+  font-size:11px;
+  line-height:1.35;
+  font-weight:800;
+  text-align:center;
+  margin-top:7px;
+  color:#574e39;
+  min-height:30px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+/* 選択した時の月 */
+
+.selected-moon{
+  display:none;
+  position:absolute;
+  right:-7px;
+  top:-7px;
+  width:35px;
+  height:35px;
+  border-radius:50%;
+  background:linear-gradient(145deg,#f5da72,#d5a523);
+  z-index:4;
+  filter:drop-shadow(0 3px 4px rgba(160,125,25,.20));
+  border:2px solid #fff;
+  overflow:hidden;
+}
+
+.selected-moon::after{
+  content:"";
+  position:absolute;
+  width:31px;
+  height:31px;
+  border-radius:50%;
+  background:#fff8df;
+  left:14px;
+  top:-6px;
+}
+
+.member-card.selected .selected-moon{
+  display:block;
+}
+
+.bottom-actions{
+  position:sticky;
+  bottom:8px;
+  margin-top:14px;
+  padding:10px;
+  border-radius:20px;
+  background:rgba(255,252,240,.94);
+  border:1px solid rgba(231,210,142,.75);
+  backdrop-filter:blur(10px);
+  box-shadow:0 8px 30px rgba(160,130,45,.13);
+  z-index:10;
+}
+
+.selection-count{
+  text-align:center;
+  color:#a4862e;
+  font-size:12px;
+  font-weight:800;
+  margin-bottom:8px;
+}
+
+/* 2択 */
+
+.compare-wrap{
+  padding:10px 12px 18px;
+}
+
+.compare-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin-top:17px;
+}
+
+.compare-card{
+  border:1px solid #ead898;
+  border-radius:22px;
+  background:#fff;
+  padding:8px 8px 13px;
+  box-shadow:0 10px 28px rgba(150,125,50,.10);
+  cursor:pointer;
+}
+
+.compare-card:active{
+  transform:scale(.985);
+}
+
+.compare-photo{
+  width:100%;
+  aspect-ratio:3/4;
+  object-fit:cover;
+  object-position:center top;
+  border-radius:16px;
+  display:block;
+}
+
+.compare-name{
+  text-align:center;
+  margin-top:10px;
+  font-size:14px;
+  font-weight:900;
+}
+
+/* 結果 */
+
+.result-heading{
+  text-align:center;
+  padding:7px 0 18px;
+}
+
+.result-heading h2{
+  margin:0;
+  font-size:27px;
+}
+
+.result-decoration{
+  width:120px;
+  height:1px;
+  background:linear-gradient(90deg,transparent,#d7b848,transparent);
+  margin:14px auto 0;
+}
+
+.result-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+}
+
+.result-card{
+  position:relative;
+  background:#fff;
+  border:1px solid #ebdca6;
+  border-radius:18px;
+  padding:7px 7px 10px;
+  box-shadow:0 7px 20px rgba(145,120,45,.09);
+}
+
+.result-card img{
+  width:100%;
+  aspect-ratio:3/4;
+  object-fit:cover;
+  object-position:center top;
+  border-radius:13px;
+  display:block;
+}
+
+.rank-badge{
+  position:absolute;
+  top:0;
+  left:0;
+  transform:translate(-18%,-18%);
+  width:34px;
+  height:34px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
+  font-size:13px;
+  font-weight:900;
+  border:2px solid #fff;
+  z-index:2;
+}
+
+.result-name{
+  text-align:center;
+  font-size:11px;
+  font-weight:900;
+  margin-top:7px;
+  min-height:29px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.result-buttons{
+  display:grid;
+  gap:10px;
+  margin-top:18px;
+}
+
+/* モーダル */
+
+.modal{
+  position:fixed;
+  inset:0;
+  z-index:100;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  background:rgba(65,55,30,.55);
+}
+
+.modal.show{
+  display:flex;
+}
+
+.modal-box{
+  width:min(100%,430px);
+  max-height:90vh;
+  overflow:auto;
+  border-radius:24px;
+  background:#fff;
+  padding:17px;
+}
+
+.modal-box img{
+  width:100%;
+  border-radius:16px;
+  display:block;
+}
+
+.modal-actions{
+  display:grid;
+  gap:9px;
+  margin-top:12px;
+}
+
+@media(max-width:380px){
+  .app{
+    padding-left:10px;
+    padding-right:10px;
+  }
+
+  .title{font-size:27px}
+  .member-grid{gap:6px}
+  .member-name{font-size:10px}
+  .step-label{font-size:10px}
+}
+</style>
+</head>
+
+<body>
+
+<div class="decor-moon moon-a"></div>
+<div class="decor-moon moon-b"></div>
+<div class="decor-moon moon-c"></div>
+
+<div class="app">
+<div class="content">
+
+<header class="header">
+  <div class="eyebrow">TSUKI-GUMI TOP 9</div>
+
+  <h1 class="title">
+    月組 好き顔<span class="title-number">9選</span>
+  </h1>
+
+  <div class="title-decoration">
+    <div class="mini-moon"></div>
+  </div>
+</header>
+
+<div id="steps"></div>
+<main id="app"></main>
+
+</div>
+</div>
+
+<div class="modal" id="imageModal">
+  <div class="modal-box">
+    <img id="generatedImage" alt="月組 好き顔9選">
+
+    <div class="modal-actions">
+      <button class="primary-button" id="shareImageButton">
+        画像を保存・共有
+      </button>
+
+      <button class="secondary-button" id="closeModalButton">
+        閉じる
+      </button>
+    </div>
+  </div>
+</div>
+
+<script src="members.js"></script>
+
+<script>
+
+const SAVE_KEY = "tsukigumiTop9StateV1";
+const PAGE_SIZE = 9;
+const NARROW_SIZE = 4;
+const FINAL_COUNT = 9;
+
+const app = document.getElementById("app");
+const steps = document.getElementById("steps");
+
+let state = createInitialState();
+
+function createInitialState(){
+  return{
+    stage:"home",
+    preliminaryPool:[],
+    preliminaryPage:0,
+    preliminarySelected:[],
+    narrowPool:[],
+    narrowSelected:[],
+    narrowRound:0,
+    rankPool:[],
+    ranked:[],
+    insertIndex:0,
+    low:0,
+    high:0,
+    currentMiddle:0,
+    result:[]
+  };
+}
+
+function saveState(){
+  localStorage.setItem(SAVE_KEY,JSON.stringify(state));
+}
+
+function clearSavedState(){
+  localStorage.removeItem(SAVE_KEY);
+}
+
+function shuffle(array){
+  const copy=[...array];
+
+  for(let i=copy.length-1;i>0;i--){
+    const j=Math.floor(Math.random()*(i+1));
+    [copy[i],copy[j]]=[copy[j],copy[i]];
+  }
+
+  return copy;
+}
+
+function memberById(id){
+  return members.find(member=>member.id===id);
+}
+
+/* ステップ */
+
+function currentStep(){
+  if(state.stage==="preliminary") return 1;
+  if(state.stage==="narrow") return 2;
+  if(state.stage==="ranking") return 3;
+  if(state.stage==="result") return 4;
+  return 0;
+}
+
+function renderSteps(){
+
+  if(state.stage==="home"){
+    steps.innerHTML="";
+    return;
+  }
+
+  const current=currentStep();
+  const labels=["予選","20人","順位","結果"];
+
+  steps.innerHTML=`
+    <div class="stepper">
+      ${labels.map((label,index)=>{
+        const number=index+1;
+        let className="";
+
+        if(number<current){
+          className="done";
+        }else if(number===current){
+          className="active";
+        }
+
+        return`
+          <div class="step ${className}">
+            <div class="step-circle">${number}</div>
+            <div class="step-label">${label}</div>
+          </div>
+        `;
+      }).join("")}
+    </div>
+  `;
+}
+
+/* 全体描画 */
+
+function render(){
+  renderSteps();
+  saveState();
+
+  if(state.stage==="home"){
+    renderHome();
+  }else if(state.stage==="preliminary"){
+    renderPreliminary();
+  }else if(state.stage==="narrow"){
+    renderNarrow();
+  }else if(state.stage==="ranking"){
+    renderRanking();
+  }else if(state.stage==="result"){
+    renderResult();
+  }
+}
+
+/* ホーム */
+
+function renderHome(){
+
+  app.innerHTML=`
+    <section class="panel home">
+
+      <div class="home-moon"></div>
+
+      <h2>月組 好き顔9選</h2>
+
+      <p>
+        月組生の中から好きな顔を選んで、
+        あなただけのTOP9を作ります。
+      </p>
+
+      <div class="flow">
+        <span>72人</span>
+        <b>→</b>
+        <span>20人</span>
+        <b>→</b>
+        <span>2択</span>
+        <b>→</b>
+        <span>TOP9</span>
+      </div>
+
+      <button class="primary-button" onclick="startGame()">
+        はじめる
+      </button>
+
+    </section>
+  `;
+}
+
+function startGame(){
+
+  state=createInitialState();
+  state.stage="preliminary";
+  state.preliminaryPool=shuffle(members.map(member=>member.id));
+
+  render();
+}
+
+/* 予選 */
+
+function renderPreliminary(){
+
+  const totalPages=Math.ceil(state.preliminaryPool.length/PAGE_SIZE);
+  const start=state.preliminaryPage*PAGE_SIZE;
+  const pageIds=state.preliminaryPool.slice(start,start+PAGE_SIZE);
+  const progress=((state.preliminaryPage+1)/totalPages)*100;
+
+  app.innerHTML=`
+    <div class="progress-wrap">
+
+      <div class="progress-info">
+        <span>好きな顔を選ぶ</span>
+        <span>${state.preliminaryPage+1} / ${totalPages}</span>
+      </div>
+
+      <div class="progress-track">
+        <div class="progress-bar" style="width:${progress}%"></div>
+      </div>
+
+    </div>
+
+    <section class="panel">
+
+      <h2 class="stage-title">好きな人を選んでね</h2>
+
+      <p class="stage-subtitle">
+        何人選んでもOK
+      </p>
+
+      <div class="member-grid">
+
+        ${pageIds.map(id=>{
+
+          const member=memberById(id);
+          const selected=state.preliminarySelected.includes(id);
+
+          return`
+            <div
+              class="member-card ${selected?"selected":""}"
+              onclick="togglePreliminary(${id})"
+            >
+
+              <img
+                class="member-photo"
+                src="${member.image}"
+                alt="${member.name}"
+              >
+
+              <div class="selected-moon"></div>
+
+              <div class="member-name">
+                ${member.name}
+              </div>
+
+            </div>
+          `;
+
+        }).join("")}
+
+      </div>
+
+      <div class="bottom-actions">
+
+        <div class="selection-count">
+          現在 ${state.preliminarySelected.length}人 選択中
+        </div>
+
+        <div class="button-row">
+
+          <button
+            class="secondary-button"
+            onclick="previousPreliminary()"
+            ${state.preliminaryPage===0?"disabled":""}
+          >
+            前へ
+          </button>
+
+          <button
+            class="primary-button"
+            onclick="nextPreliminary()"
+          >
+            ${
+              state.preliminaryPage===totalPages-1
+              ?"選択を決定"
+              :"次へ"
+            }
+          </button>
+
+        </div>
+
+      </div>
+
+    </section>
+  `;
+}
+
+function togglePreliminary(id){
+
+  if(state.preliminarySelected.includes(id)){
+    state.preliminarySelected=
+      state.preliminarySelected.filter(selectedId=>selectedId!==id);
+  }else{
+    state.preliminarySelected.push(id);
+  }
+
+  renderPreliminary();
+  saveState();
+}
+
+function previousPreliminary(){
+
+  if(state.preliminaryPage>0){
+    state.preliminaryPage--;
+    render();
+  }
+}
+
+function nextPreliminary(){
+
+  const totalPages=Math.ceil(state.preliminaryPool.length/PAGE_SIZE);
+
+  if(state.preliminaryPage<totalPages-1){
+    state.preliminaryPage++;
+    render();
+    return;
+  }
+
+  if(state.preliminarySelected.length<FINAL_COUNT){
+
+    alert(
+      `現在${state.preliminarySelected.length}人です。TOP9を作るため、9人以上選んでね！前へ戻って追加できます。`
+    );
+
+    return;
+  }
+
+  beginNarrowing([...state.preliminarySelected]);
+}
+
+/* 20人まで絞る */
+
+function beginNarrowing(ids){
+
+  if(ids.length>20){
+
+    state.stage="narrow";
+    state.narrowPool=shuffle(ids);
+    state.narrowSelected=[];
+    state.narrowRound=0;
+
+    render();
+    return;
+  }
+
+  startRanking(ids);
+}
+
+function renderNarrow(){
+
+  const start=state.narrowRound*NARROW_SIZE;
+  const pageIds=state.narrowPool.slice(start,start+NARROW_SIZE);
+
+  if(pageIds.length===0){
+    finishNarrowing();
+    return;
+  }
+
+  const totalRounds=Math.ceil(state.narrowPool.length/NARROW_SIZE);
+  const progress=((state.narrowRound+1)/totalRounds)*100;
+  const remaining=Math.max(0,20-state.narrowSelected.length);
+
+  app.innerHTML=`
+    <div class="progress-wrap">
+
+      <div class="progress-info">
+        <span>20人まで絞る</span>
+        <span>${state.narrowRound+1} / ${totalRounds}</span>
+      </div>
+
+      <div class="progress-track">
+        <div class="progress-bar" style="width:${progress}%"></div>
+      </div>
+
+    </div>
+
+    <section class="panel">
+
+      <h2 class="stage-title">
+        より好きな人を選んでね
+      </h2>
+
+      <p class="stage-subtitle">
+        あと ${remaining}人 選べます
+      </p>
+
+      <div class="member-grid">
+
+        ${pageIds.map(id=>{
+
+          const member=memberById(id);
+          const selected=state.narrowSelected.includes(id);
+
+          return`
+            <div
+              class="member-card ${selected?"selected":""}"
+              onclick="toggleNarrow(${id})"
+            >
+
+              <img
+                class="member-photo"
+                src="${member.image}"
+                alt="${member.name}"
+              >
+
+              <div class="selected-moon"></div>
+
+              <div class="member-name">
+                ${member.name}
+              </div>
+
+            </div>
+          `;
+
+        }).join("")}
+
+      </div>
+
+      <div class="bottom-actions">
+
+        <div class="selection-count">
+          ${state.narrowSelected.length} / 20人
+        </div>
+
+        <div class="button-row">
+
+          <button
+            class="secondary-button"
+            onclick="previousNarrow()"
+            ${state.narrowRound===0?"disabled":""}
+          >
+            前へ
+          </button>
+
+          <button
+            class="primary-button"
+            onclick="nextNarrowRound()"
+          >
+            ${
+              state.narrowRound===totalRounds-1
+              ?"20人を決定"
+              :"次へ"
+            }
+          </button>
+
+        </div>
+
+      </div>
+
+    </section>
+  `;
+}
+
+function toggleNarrow(id){
+
+  if(state.narrowSelected.includes(id)){
+
+    state.narrowSelected=
+      state.narrowSelected.filter(selectedId=>selectedId!==id);
+
+  }else{
+
+    if(state.narrowSelected.length>=20){
+      alert("選べるのは20人までです");
+      return;
+    }
+
+    state.narrowSelected.push(id);
+  }
+
+  renderNarrow();
+  saveState();
+}
+
+function previousNarrow(){
+
+  if(state.narrowRound>0){
+    state.narrowRound--;
+    render();
+  }
+}
+
+function nextNarrowRound(){
+
+  const totalRounds=Math.ceil(state.narrowPool.length/NARROW_SIZE);
+
+  if(state.narrowRound<totalRounds-1){
+    state.narrowRound++;
+    render();
+    return;
+  }
+
+  finishNarrowing();
+}
+
+function finishNarrowing(){
+
+  if(state.narrowSelected.length!==20){
+
+    alert(
+      `現在${state.narrowSelected.length}人です。20人選んでね！前へ戻って追加できます。`
+    );
+
+    return;
+  }
+
+  startRanking([...state.narrowSelected]);
+}
+
+/* 順位決定 */
+
+function startRanking(ids){
+
+  if(ids.length<FINAL_COUNT){
+    alert("TOP9を作るには9人以上必要です");
+    return;
+  }
+
+  state.stage="ranking";
+  state.rankPool=shuffle(ids);
+  state.ranked=[state.rankPool[0]];
+  state.insertIndex=1;
+
+  prepareInsertion();
+}
+
+function prepareInsertion(){
+
+  if(state.insertIndex>=state.rankPool.length){
+    finishRanking();
+    return;
+  }
+
+  state.low=0;
+  state.high=state.ranked.length;
+
+  render();
+}
+
+function renderRanking(){
+
+  const candidateId=state.rankPool[state.insertIndex];
+
+  if(state.low>=state.high){
+
+    state.ranked.splice(
+      state.low,
+      0,
+      candidateId
+    );
+
+    state.insertIndex++;
+    prepareInsertion();
+    return;
+  }
+
+  const middle=Math.floor((state.low+state.high)/2);
+
+  state.currentMiddle=middle;
+
+  const opponentId=state.ranked[middle];
+
+  const candidate=memberById(candidateId);
+  const opponent=memberById(opponentId);
+
+  const progress=(state.insertIndex/state.rankPool.length)*100;
+
+  app.innerHTML=`
+    <div class="progress-wrap">
+
+      <div class="progress-info">
+        <span>2択で順位決定</span>
+        <span>${state.insertIndex+1} / ${state.rankPool.length}</span>
+      </div>
+
+      <div class="progress-track">
+        <div class="progress-bar" style="width:${progress}%"></div>
+      </div>
+
+    </div>
+
+    <section class="panel compare-wrap">
+
+      <h2 class="stage-title">
+        どっちが好き？
+      </h2>
+
+      <div class="compare-grid">
+
+        <div
+          class="compare-card"
+          onclick="chooseComparison('candidate')"
+        >
+          <img
+            class="compare-photo"
+            src="${candidate.image}"
+            alt="${candidate.name}"
+          >
+
+          <div class="compare-name">
+            ${candidate.name}
+          </div>
+        </div>
+
+        <div
+          class="compare-card"
+          onclick="chooseComparison('opponent')"
+        >
+          <img
+            class="compare-photo"
+            src="${opponent.image}"
+            alt="${opponent.name}"
+          >
+
+          <div class="compare-name">
+            ${opponent.name}
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+  `;
+
+  saveState();
+}
+
+function chooseComparison(choice){
+
+  const middle=state.currentMiddle;
+
+  if(choice==="candidate"){
+    state.high=middle;
+  }else{
+    state.low=middle+1;
+  }
+
+  renderRanking();
+}
+
+function finishRanking(){
+
+  state.result=[...state.ranked].slice(0,FINAL_COUNT);
+  state.stage="result";
+
+  render();
+}
+
+/* 結果 */
+
+function rankColor(index){
+
+  const colors=[
+    "#cda72b",
+    "#a9afb3",
+    "#b88650",
+    "#d5ad32",
+    "#e2c45b",
+    "#c79c21",
+    "#e7cf79",
+    "#b9942b",
+    "#d8b94d"
+  ];
+
+  return colors[index]||"#d5ad32";
+}
+
+function renderResult(){
+
+  app.innerHTML=`
+    <section class="panel">
+
+      <div class="result-heading">
+        <h2>月組 好き顔9選</h2>
+        <div class="result-decoration"></div>
+      </div>
+
+      <div class="result-grid">
+
+        ${state.result.map((id,index)=>{
+
+          const member=memberById(id);
+
+          return`
+            <div class="result-card">
+
+              <div
+                class="rank-badge"
+                style="background:${rankColor(index)}"
+              >
+                ${index+1}
+              </div>
+
+              <img
+                src="${member.image}"
+                alt="${member.name}"
+              >
+
+              <div class="result-name">
+                ${member.name}
+              </div>
+
+            </div>
+          `;
+
+        }).join("")}
+
+      </div>
+
+      <div class="result-buttons">
+
+        <button
+          class="primary-button"
+          onclick="showSaveImage()"
+        >
+          結果画像を作る
+        </button>
+
+        <button
+          class="secondary-button"
+          onclick="restartGame()"
+        >
+          もう一度遊ぶ
+        </button>
+
+      </div>
+
+    </section>
+  `;
+}
+
+function restartGame(){
+  clearSavedState();
+  state=createInitialState();
+  render();
+}
+
+/* 保存画像 */
+
+function roundedRect(ctx,x,y,width,height,radius){
+
+  const r=Math.min(radius,width/2,height/2);
+
+  ctx.beginPath();
+  ctx.moveTo(x+r,y);
+  ctx.arcTo(x+width,y,x+width,y+height,r);
+  ctx.arcTo(x+width,y+height,x,y+height,r);
+  ctx.arcTo(x,y+height,x,y,r);
+  ctx.arcTo(x,y,x+width,y,r);
+  ctx.closePath();
+}
+
+function loadImage(src){
+
+  return new Promise((resolve,reject)=>{
+
+    const image=new Image();
+
+    image.onload=()=>resolve(image);
+    image.onerror=reject;
+    image.src=src;
+
+  });
+}
+
+function drawCover(ctx,image,x,y,width,height){
+
+  const imageRatio=image.width/image.height;
+  const boxRatio=width/height;
+
+  let sx=0;
+  let sy=0;
+  let sw=image.width;
+  let sh=image.height;
+
+  if(imageRatio>boxRatio){
+
+    sw=image.height*boxRatio;
+    sx=(image.width-sw)/2;
+
+  }else{
+
+    sh=image.width/boxRatio;
+    sy=(image.height-sh)*.20;
+
+    if(sy<0) sy=0;
+
+    if(sy+sh>image.height){
+      sy=image.height-sh;
+    }
+  }
+
+  ctx.drawImage(
+    image,
+    sx,sy,sw,sh,
+    x,y,width,height
+  );
+}
+
+/* Canvas用の月 */
+
+function drawMoon(
+  ctx,
+  x,
+  y,
+  size,
+  color,
+  opacity=1,
+  rotation=0
+){
+
+  ctx.save();
+
+  ctx.globalAlpha=opacity;
+  ctx.translate(x,y);
+  ctx.rotate(rotation);
+
+  ctx.fillStyle=color;
+
+  ctx.beginPath();
+  ctx.arc(0,0,size,0,Math.PI*2);
+  ctx.fill();
+
+  ctx.globalCompositeOperation="destination-out";
+
+  ctx.beginPath();
+  ctx.arc(
+    size*.42,
+    -size*.18,
+    size*.90,
+    0,
+    Math.PI*2
+  );
+  ctx.fill();
+
+  ctx.restore();
+}
+
+async function makeResultCanvas(){
+
+  const canvas=document.createElement("canvas");
+
+  canvas.width=1080;
+  canvas.height=1700;
+
+  const ctx=canvas.getContext("2d");
+
+  const gradient=ctx.createLinearGradient(0,0,0,1700);
+
+  gradient.addColorStop(0,"#fffefb");
+  gradient.addColorStop(.5,"#fffbed");
+  gradient.addColorStop(1,"#fff3ce");
+
+  ctx.fillStyle=gradient;
+
+  ctx.fillRect(
+    0,0,1080,1700
+  );
+
+  drawMoon(ctx,35,95,105,"#d5ad32",.16,-.25);
+  drawMoon(ctx,1040,145,125,"#e1c252",.17,.25);
+  drawMoon(ctx,25,1510,125,"#e2c45b",.17,-.2);
+  drawMoon(ctx,1050,1545,105,"#cfa529",.15,.3);
+
+  ctx.textAlign="center";
+  ctx.fillStyle="#a98a34";
+  ctx.font='700 25px Georgia, serif';
+
+  ctx.fillText(
+    "T S U K I - G U M I   T O P   9",
+    540,
+    76
+  );
+
+  ctx.fillStyle="#554b35";
+  ctx.font='900 64px -apple-system, BlinkMacSystemFont, "Yu Gothic", sans-serif';
+
+  ctx.fillText(
+    "月組 好き顔9選",
+    540,
+    160
+  );
+
+  ctx.strokeStyle="#dcc05d";
+  ctx.lineWidth=2;
+
+  ctx.beginPath();
+  ctx.moveTo(235,218);
+  ctx.lineTo(470,218);
+  ctx.moveTo(610,218);
+  ctx.lineTo(845,218);
+  ctx.stroke();
+
+  drawMoon(
+    ctx,
+    540,
+    218,
+    20,
+    "#d0a72b",
+    1,
+    0
+  );
+
+  const marginX=55;
+  const gapX=25;
+  const gapY=30;
+
+  const cardWidth=
+    (1080-marginX*2-gapX*2)/3;
+
+  const cardHeight=405;
+  const startY=275;
+  const photoMargin=12;
+
+  const photoWidth=
+    cardWidth-photoMargin*2;
+
+  const photoHeight=305;
+
+  for(
+    let index=0;
+    index<state.result.length;
+    index++
+  ){
+
+    const member=memberById(state.result[index]);
+
+    const column=index%3;
+    const row=Math.floor(index/3);
+
+    const x=
+      marginX+
+      column*(cardWidth+gapX);
+
+    const y=
+      startY+
+      row*(cardHeight+gapY);
+
+    ctx.save();
+
+    ctx.shadowColor=
+      "rgba(145,120,45,.14)";
+
+    ctx.shadowBlur=22;
+    ctx.shadowOffsetY=9;
+    ctx.fillStyle="#ffffff";
+
+    roundedRect(
+      ctx,
+      x,y,
+      cardWidth,
+      cardHeight,
+      23
+    );
+
+    ctx.fill();
+    ctx.restore();
+
+    ctx.fillStyle="#ffffff";
+
+    roundedRect(
+      ctx,
+      x,y,
+      cardWidth,
+      cardHeight,
+      23
+    );
+
+    ctx.fill();
+
+    try{
+
+      const image=
+        await loadImage(
+          member.image
+        );
+
+      ctx.save();
+
+      roundedRect(
+        ctx,
+        x+photoMargin,
+        y+photoMargin,
+        photoWidth,
+        photoHeight,
+        15
+      );
+
+      ctx.clip();
+
+      drawCover(
+        ctx,
+        image,
+        x+photoMargin,
+        y+photoMargin,
+        photoWidth,
+        photoHeight
+      );
+
+      ctx.restore();
+
+    }catch(error){
+      console.error(error);
+    }
+
+    const rankX=x+13;
+    const rankY=y+20;
+
+    ctx.beginPath();
+
+    ctx.arc(
+      rankX,
+      rankY,
+      36,
+      0,
+      Math.PI*2
+    );
+
+    ctx.fillStyle=rankColor(index);
+    ctx.fill();
+
+    ctx.lineWidth=4;
+    ctx.strokeStyle="#ffffff";
+    ctx.stroke();
+
+    ctx.fillStyle="#ffffff";
+    ctx.textAlign="center";
+    ctx.font='900 31px -apple-system, sans-serif';
+
+    ctx.fillText(
+      String(index+1),
+      rankX,
+      rankY+11
+    );
+
+    ctx.fillStyle="#554b35";
+    ctx.textAlign="center";
+    ctx.font='900 28px -apple-system, BlinkMacSystemFont, "Yu Gothic", sans-serif';
+
+    ctx.fillText(
+      member.name,
+      x+cardWidth/2,
+      y+366
+    );
+  }
+
+  const footerY=1600;
+
+  ctx.strokeStyle="#dcc05d";
+  ctx.lineWidth=2;
+
+  ctx.beginPath();
+  ctx.moveTo(270,footerY);
+  ctx.lineTo(470,footerY);
+  ctx.moveTo(610,footerY);
+  ctx.lineTo(810,footerY);
+  ctx.stroke();
+
+  drawMoon(
+    ctx,
+    540,
+    footerY,
+    18,
+    "#cfa52b",
+    1,
+    0
+  );
+
+  const today=
+    new Date()
+      .toLocaleDateString(
+        "ja-JP",
+        {
+          year:"numeric",
+          month:"2-digit",
+          day:"2-digit"
+        }
+      )
+      .replaceAll("/", ".");
+
+  ctx.fillStyle="#9d8541";
+  ctx.textAlign="center";
+  ctx.font='500 23px Georgia, serif';
+
+  ctx.fillText(
+    today,
+    540,
+    1660
+  );
+
+  return canvas;
+}
+
+/* 保存・共有 */
+
+let latestCanvas=null;
+
+async function showSaveImage(){
+
+  try{
+
+    latestCanvas=
+      await makeResultCanvas();
+
+    const image=
+      document.getElementById(
+        "generatedImage"
+      );
+
+    image.src=
+      latestCanvas.toDataURL(
+        "image/png"
+      );
+
+    document
+      .getElementById("imageModal")
+      .classList.add("show");
+
+  }catch(error){
+
+    console.error(error);
+
+    alert(
+      "画像の作成に失敗しました"
+    );
+  }
+}
+
+document
+.getElementById("shareImageButton")
+.addEventListener(
+  "click",
+  async()=>{
+
+    if(!latestCanvas) return;
+
+    latestCanvas.toBlob(
+      async blob=>{
+
+        if(!blob) return;
+
+        const file=
+          new File(
+            [blob],
+            "tsukigumi-top9.png",
+            {type:"image/png"}
+          );
+
+        if(
+          navigator.share &&
+          navigator.canShare &&
+          navigator.canShare({
+            files:[file]
+          })
+        ){
+
+          try{
+
+            await navigator.share({
+              files:[file],
+              title:"月組 好き顔9選"
+            });
+
+            return;
+
+          }catch(error){
+
+            if(error.name==="AbortError"){
+              return;
+            }
+          }
+        }
+
+        const url=
+          URL.createObjectURL(blob);
+
+        const link=
+          document.createElement("a");
+
+        link.href=url;
+        link.download="tsukigumi-top9.png";
+
+        document.body.appendChild(link);
+
+        link.click();
+        link.remove();
+
+        setTimeout(
+          ()=>URL.revokeObjectURL(url),
+          1000
+        );
+
+      },
+      "image/png"
+    );
+  }
+);
+
+document
+.getElementById("closeModalButton")
+.addEventListener(
+  "click",
+  ()=>{
+
+    document
+      .getElementById("imageModal")
+      .classList.remove("show");
+
+  }
+);
+
+render();
+
+</script>
+</body>
+</html>
