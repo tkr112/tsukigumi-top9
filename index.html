@@ -1469,26 +1469,25 @@ function drawMoon(
   opacity=1,
   rotation=0
 ){
-
   ctx.save();
 
   ctx.globalAlpha=opacity;
   ctx.translate(x,y);
   ctx.rotate(rotation);
 
+  /* 黄色い丸 */
   ctx.fillStyle=color;
-
   ctx.beginPath();
   ctx.arc(0,0,size,0,Math.PI*2);
   ctx.fill();
 
-  ctx.globalCompositeOperation="destination-out";
-
+  /* 上から背景色の丸を重ねて三日月にする */
+  ctx.fillStyle="#fff9e8";
   ctx.beginPath();
   ctx.arc(
-    size*.42,
+    size*.48,
     -size*.18,
-    size*.90,
+    size*.88,
     0,
     Math.PI*2
   );
